@@ -53,7 +53,7 @@ public class SocksStoreServiceImpl implements SocksStoreService {
                     socksItem.getKey().getSize().equals(size) &&
                     socksItem.getKey().getCottonPart() >= cottonMin &&
                     socksItem.getKey().getCottonPart() <= cottonMax) {
-                result += socksItem.getValue();
+                 result += socksItem.getValue();
             }
         }
         return result;
