@@ -49,12 +49,11 @@ public class SocksStoreServiceImpl implements SocksStoreService {
 
         Map<Socks, Integer> socksMap = socksRepository.getAll();
         for (Map.Entry<Socks, Integer> socksItem : socksMap.entrySet()) {
-            Socks socks = socksItem.getKey();
 
-            if (socks.getColor().equals(color) &&
-                    socks.getSize().equals(size) &&
-                    socks.getCottonPart() >= cottonMin &&
-                    socks.getCottonPart() <= cottonMax) {
+            if (socksItem.getKey().getColor().equals(color) &&
+                    socksItem.getKey().getSize().equals(size) &&
+                    socksItem.getKey().getCottonPart() >= cottonMin &&
+                    socksItem.getKey().getCottonPart() <= cottonMax) {
                 return socksItem.getValue();
             }
         }
