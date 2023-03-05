@@ -46,18 +46,17 @@ public class SocksStoreServiceImpl implements SocksStoreService {
         if (!validationService.validate(color, size, cottonMin, cottonMax)) {
             throw new ValidationException();
         }
-
         Map<Socks, Integer> socksMap = socksRepository.getAll();
+        Integer result = 0;
         for (Map.Entry<Socks, Integer> socksItem : socksMap.entrySet()) {
-
             if (socksItem.getKey().getColor().equals(color) &&
                     socksItem.getKey().getSize().equals(size) &&
                     socksItem.getKey().getCottonPart() >= cottonMin &&
                     socksItem.getKey().getCottonPart() <= cottonMax) {
-                return socksItem.getValue();
+                result += socksItem.getValue();
             }
         }
-        return 0;
+        return result;
     }
 
     private void checkSocksBatch(SocksBatch socksBatch) {
